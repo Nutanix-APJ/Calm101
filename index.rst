@@ -20,19 +20,7 @@
   karbon_deploy_vm/karbon_deploy_vm
   karbon_create_cluster/karbon_create_cluster
   karbon_deploy_application/karbon_deploy_application
-  karbon_delete_application/karbon_delete_application
-
-
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Appendix
-  :name: _labs
-  :hidden:
-
-  tools_vms/windows_tools_vm
-  tools_vms/linux_tools_vm
-
+  
 
 .. _getting_started:
 
@@ -44,9 +32,7 @@ Getting Started
   <strong><font color="red">Do not start any labs before being told to do so by your
   instructor.</font></strong><br><br>
 
-Welcome to Nutanix New Hire Training! Carefully review the **Overview** section of each lab before proceeding with the exercise.
-
-In following steps, you may replace xx with your assigned cluster ID
+Welcome to Nutanix Calm and Karbon bootcamp! 
 
 
 Cluster Access
