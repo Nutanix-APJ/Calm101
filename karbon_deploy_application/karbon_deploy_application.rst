@@ -9,18 +9,6 @@ Overview
 
 In this module you are going to deploy the Wordpress on the Kubernetes Cluster you've created earlier (using MySQL as the database layer).
 
-.. note::
-
-	**Make sure you have the pre-requirements installed and ready for running!**
-	If you are not sure please follow :ref:`install_wget` and :ref:`install_kubectl` to make sure you have the required applications available.
-
-In this lab we will download the kubeconfig, interact with our cluster from the command line with kubectl, and deploy the Wordpress application.
-
-.. note::
-
-	All the screenshots have been created using a Windows machine. This due to the fact that most of the tools that are used for this module are not easy to be installed/used. Also the directory in which is being run from commands is the Downloads directory of the logged in user.
-
-
 Configure kubeconfig using Linux
 +++++++++++++++++
 
