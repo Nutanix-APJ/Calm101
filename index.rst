@@ -3,7 +3,7 @@
 
 .. toctree::
   :maxdepth: 2
-  :caption: Calm
+  :caption: Calm 101
   :name: _calm
   :hidden:
 
@@ -13,7 +13,7 @@
  
 .. toctree::
   :maxdepth: 2
-  :caption: Karbon
+  :caption: Karbon 101
   :name: _Karbon
   :hidden:
   
