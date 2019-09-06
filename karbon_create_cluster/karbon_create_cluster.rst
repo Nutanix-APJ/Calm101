@@ -1,7 +1,7 @@
 .. _karbon_create_cluster:
 
 -------------------------------------
-Karbon: Creating a Kubernetes Cluster
+Creating a Kubernetes Cluster
 -------------------------------------
 
 Overview
@@ -24,15 +24,21 @@ Create a Karbon Kubernetes Cluster
 
 In this exercise you will create a production ready Kubernetes cluster with Nutanix Karbon.
 
+Open https://<Prism-Central-IP>:9440/ in a browser and log in.
+
 Navigate to **Prism Central > Select the Three Dashes > Karbon** and ensure you see a ‘Karbon is successfully enabled’ notification.
 
 Click the link to open the Karbon Console.
 
 .. image:: images/karbon_create_cluster_0.png
 
-Next click **+ Create Cluster**.
+Next click **+ Create Kubernetes Cluster**.
 
 .. image:: images/karbon_create_cluster_2.png
+
+Select “Production Cluster” and click **Next**
+
+.. image:: images/karbon_create_cluster_1.png
 
 Fill in the following:
 
@@ -47,61 +53,19 @@ Fill in the following:
 
 Click **Next**
 
-**Worker Configuration**
+Select the virtual network to deploy Kubernetes nodes and click **Next**. The virtual network selected must have AHV IPAM enabled (with DNS & NTP configured in both Prism Central & Prism Elements accordingly). You must also key in an IP Address for the Master VIP that is within the same virtual network but outside of the IPAM range specified for the virtual network.
 
-.. note::
+.. image:: images/karbon_create_cluster_31.png
 
-  This defines the number of worker nodes that will run the Kubernetes pods.
+Enter Service & POD CIDR ranges and click **Next**. Keeping the defaults is recommended for this lab.
 
-Leave all defaults
+.. image:: images/karbon_create_cluster_32.png
 
-.. image:: images/karbon_create_cluster_4.png
+Enter a username & password for the selected target Prism Elements cluster with administrative privileges and click **Create**
 
-Click **Next**.
+.. image:: images/karbon_create_cluster_33.png
 
-**Master Configuration**
-
-.. note::
-
-  This defines the number of master nodes that controls the Kubernetes cluster, and the number of etcd VMs, which manages the cluster state.
-
-Leave all defaults.
-
-.. image:: images/karbon_create_cluster_5.png
-
-click **Next**.
-
-**Network**
-
-.. note::
-
-  We use flannel as the network provider. More information on Flannel can be found here: https://github.com/coreos/flannel#flannel
-
-- **Network Provider** - Flannel
-- **VM Network** - Primary
-- **Service CIDR** - Leave the default of 172.19.0.0/16
-- **Pod CIDR** - Leave the default of 172.20.0.0/16
-
-.. image:: images/karbon_create_cluster_6.png
-
-Click **Next**
-
-**Storage Class**
-
-- **Storage Class Name** - default-storageclass-*initialsLowerCase*
-- **Prism Element Cluster** - Leave default selected
-- **Cluster Username** - admin
-- **Cluster Password** - *HPOC Password*
-- **Storage Container Name** - default-container-XXXXXXX
-- **File System** - ext4
-
-.. image:: images/karbon_create_cluster_7.png
-
-Click **Create**
-
-.. note::
-
-  **Wait until the cluster has been created before proceeding**
+Wait for the cluster to deploy and reach a healthy status
 
 .. image:: images/karbon_create_cluster_20.png
 
@@ -118,32 +82,71 @@ During the creation of the Kubernetes cluster there will have been created:
 .. image:: images/karbon_create_cluster_19.png
 
 
-Cluster properties
-++++++++++++++++++
+KUBECONFIG
++++++++++++
 
-In the Karbon UI, click on your cluster "wordpress-*initialsLowerCase*"
+DOWNLOAD KUBECONFIG
+.....................
+
+The objective of the Kubeconfig file is to provide the information for the Kubernetes client to connect to the Kubernetes cluster.
+Download the Kubeconfig for the newly deployed cluster 
 
 .. image:: images/karbon_create_cluster_21.png
 
-This will take you to the Summary page for your cluster.
-
 .. image:: images/karbon_create_cluster_22.png
 
-You can also click into the following to see specific information:
 
-- Storage Classes
+UPLOAD KUBECONFIG TO THE KUBECTL VM DEPLOYED WITH CALM BLUEPRINT
+.................................................................
+
+Navigate to Calm in Prism Central, click applications created through Calm.
 
 .. image:: images/karbon_create_cluster_23.png
 
-- Volume's
+Drill in to Kubectl_client.  Navigate to Services
 
 .. image:: images/karbon_create_cluster_24.png
 
-- Add-on's
+Click on Kubectl Client, find out the IP address of the KUBECTL VM in Calm
 
 .. image:: images/karbon_create_cluster_25.png
 
-You now have a running Kubernetes Cluster called "wordpress-*initialsLowerCase*".
+
+Putty and login as nutanix.  The password is default password.
+
+Upload kubeconfig file to VM with putty and run the export command “export KUBECONFIG=/path/to/kubeconfig”.
+
+
+.. image:: images/karbon_create_cluster_26.png
+
+
+Create NAMESPACE
++++++++++++++++++
+
+The objective to create namespace in Kubernetes is to segregate the deployment of the application into different namespace.  Eg.  Many WordPress application can be deployed to the same Kubernetes cluster using different namespaces.
+
+Run this command to get the current namespaces
+
+.. image:: images/karbon_create_cluster_27.png
+
+Run this command to create the unique namespace.  Eg trainee-matthew
+ 
+.. image:: images/karbon_create_cluster_28.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Takeaways
 +++++++++

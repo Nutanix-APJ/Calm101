@@ -1,51 +1,45 @@
 .. _calm_marketplace:
 
 -----------------
-Calm: Marketplace
+Marketplace
 -----------------
 
 Overview
 ++++++++
 
+
+  Estimated time to complete: **35 MINUTES**
+
+  In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a pre-configured Blueprint to the local Marketplace, clone the Blueprint from the Marketplace for editing, and launch the application.
+
+
 Calm Marketplace 
 +++++++++++++++++
 
-In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a pre-configured Blueprint to the local Marketplace, clone the Blueprint from the Marketplace for editing, and launch the application.
 
 Publishing Blueprints from Marketplace Manager
 ..............................................
 
 By default, Calm comes pre-seeded with validated Blueprints for multiple open source and enterprise applications. Marketplace Manager acts as a staging area for publishing default and user-created Blueprints to your local Marketplace. The Marketplace acts as an application store, providing end users with a catalog of available applications.
 
-From **Prism Central > Apps**, select |mktmgr-icon| **Marketplace Manager** from the sidebar.
+From **Prism Central > Apps**, select **Marketplace Manager** from the sidebar.
 
 Under **Marketplace Blueprints**, select **Mongo**.
 
 .. note::
 The Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations.
 
-Select the **Calm** project from the right-hand side drop down and Click **Publish**.
+Select the **Default** project from the right-hand side drop down and Click **Apply** and then click **Publish**.
 
 .. figure:: images/marketplace_p1_1.png
 
 Wait for the Blueprint **Status** to appear as **Published**.
 
-.. figure:: images/marketplace_p1_2.png
-
-Under **Projects Shared With**, select the **Calm** Project and click **Apply**.
-
-.. figure:: images/marketplace_p1_3.png
-
-.. note::
-
-  If the **Projects Shared With** drop down menu is unavailable, refresh your browser.
 
 Cloning Blueprints from Marketplace
 ...................................
 
-From **Prism Central > Apps**, select |mkt-icon| **Marketplace** from the sidebar. All Blueprints published in Marketplace Manager are visible here.
-
-.. figure:: images/marketplace_p1_4.png
+From **Prism Central > Apps**, select **Marketplace** from the sidebar. All Blueprints published in Marketplace Manager are visible here.
 
 Select the **Mongo** Blueprint and click **Clone**.
 
@@ -57,13 +51,17 @@ Select the **Mongo** Blueprint and click **Clone**.
 
 Fill out the following fields and click **Clone**:
 
-- **Blueprint Name** - MongoDB*<INITIALS>*
-- **Project** - Calm
+- **Blueprint Name** - MongoDB-*<INITIALS>*
+- **Project** - Default
 
 Editing Cloned Blueprint
 ........................
 
-Select |bp-icon| **Blueprints** from the sidebar and click your **MongoDB<INITIALS>** Blueprint to open the Blueprint Editor.
+Navigate to **Virtual Infrastructure** click **Images**, click **Add Images**. Select **URL** as Image resource, fill out download address *https://s3.amazonaws.com/get-ahv-images/CentOS7.qcow2* and click **Upload file**, **Next** and **Save**.
+
+.. figure:: images/marketplace_p1_51.png
+
+After uploading successfully, go back to Calm page and select **Blueprints** from the sidebar and click your **MongoDB-<INITIALS>** Blueprint to open the Blueprint Editor.
 
 .. figure:: images/marketplace_p1_6.png
 
@@ -73,7 +71,7 @@ Click :fa:`exclamation-circle` to review the list of errors that would prevent a
 
 Click **Credentials** and select **CENTOS (Default)**.
 
-Fill out the following fields and click **Back**:
+Fill out the following fields and click **Save** and **Back**:
 
 - **Username** - root
 - **Secret** - Password
@@ -90,7 +88,11 @@ Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.
 
 Click **Save**.
 
-Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB*<INITIALS>*-1) and click **Create**.
+If there is a warning about account UUID , delete AWS option at the bottom.
+
+.. figure:: images/marketplace_p1_71.png
+
+Clear all errors and click **Launch**. Specify a unique **Application Name** (e.g. MongoDB-<INITIALS>-app) and click **Create**.
 
 .. figure:: images/marketplace_p1_8.png
 
@@ -105,8 +107,3 @@ Takeaways
 - Developers can publish Blueprints to the Marketplace for fast and easy consumption by users.
 - Blueprints can be launched directly from the Marketplace with no additional configuration from users, delivering a public cloud-like SaaS experience for end users.
 - Administrators have control over what Blueprints are published to the Marketplace and which projects have access to published Blueprints.
-
-.. |proj-icon| image:: ../images/projects_icon.png
-.. |mktmgr-icon| image:: ../images/marketplacemanager_icon.png
-.. |mkt-icon| image:: ../images/marketplace_icon.png
-.. |bp-icon| image:: ../images/blueprints_icon.png
