@@ -21,7 +21,7 @@
   karbon_deploy_vm/karbon_deploy_vm
   karbon_create_cluster/karbon_create_cluster
   karbon_deploy_application/karbon_deploy_application
-  
+  karbon_delete_application/karbon_delete_application
 
 .. _getting_started:
 
