@@ -1,6 +1,7 @@
 .. title:: Nutanix New Hire Training
 
 
+
 .. toctree::
   :maxdepth: 2
   :caption: Calm 101
@@ -10,6 +11,7 @@
   calm_enable_projects/calm_enable_projects
   calm_marketplace/calm_marketplace
   calm_windows_blueprint/calm_windows_blueprint
+  
  
 .. toctree::
   :maxdepth: 2
@@ -22,6 +24,7 @@
   karbon_create_cluster/karbon_create_cluster
   karbon_deploy_application/karbon_deploy_application
   karbon_delete_application/karbon_delete_application
+
 
 .. _getting_started:
 
